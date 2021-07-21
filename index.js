@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { port } = require('./src/config');
+const { port } = require('./src/utils/config');
 const connection = require('./src/utils/DatabaseConnection');
 
 connection();
