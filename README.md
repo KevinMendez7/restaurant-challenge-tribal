@@ -9,7 +9,7 @@ This is the api app for the challenge, is the backend for the frontend challenge
 
 ## Enpoints available
 
-GET /restaurant/:id
+#### GET /restaurant/:id
 
 - Will return restaurant information
 
@@ -34,7 +34,7 @@ GET http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c
   "__v": 18
 }  
 
-GET /restaurant
+#### GET /restaurant
 
 - Will return all restaurants
 
@@ -60,12 +60,13 @@ GET http://localhost:4000/restaurant
 }]
   
 
-POST /restaurant
+#### POST /restaurant
 
 - Will return all restaurants
 
 ### Example request
 
+POST http://localhost:4000/restaurant
 content-type: application/json
 
 {
@@ -88,7 +89,7 @@ content-type: application/json
 }
 
 
-DELETE /restaurant/:id
+#### DELETE /restaurant/:id
 
 - Will return deleted restaurant
 
@@ -113,7 +114,7 @@ DELETE http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c
   "__v": 18
 }  
 
-GET /restaurant/:id/pictures
+#### GET /restaurant/:id/pictures
 
 - Will return review by id
 
@@ -135,7 +136,7 @@ GET http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c/pictures
    ]
 }
 
-POST/restaurant/:id/pictures
+#### POST/restaurant/:id/pictures
 
 - Will return picture created
 
@@ -153,7 +154,7 @@ POST http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c/pictures
       "__v": 0
 }
 
-GET /review/:id
+#### GET /review/:id
 
 - Will return review by id
 
@@ -171,7 +172,7 @@ GET http://localhost:4000/review/60f781ab04ff2421f3ac6d12
       "__v": 0
 }
 
-GET /review
+#### GET /review
 
 - Will return all reviews
 
@@ -193,7 +194,7 @@ GET http://localhost:4000/review
 ]
 
 
-GET /restaurant/:id/review
+#### GET /restaurant/:id/review
 
 - Will return all restaurant reviews
 
@@ -215,7 +216,32 @@ GET http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c/review
    ]
 }
 
-POST /restaurant/:id/review
+#### POST /restaurant/:id/review
+
+- Will return review created
+
+### Example request
+
+POST http://localhost:4000/restaurant/60f7811204ff2421f3ac6d0c/review
+Content-Type: application/json
+
+{
+    "name": "Camilo Lizalde",
+    "comment": "The best fast food ever!!!"
+}
+
+
+
+### Example response
+
+ {
+      "_id": "60f781ab04ff2421f3ac6d12",
+      "name": "Camilo Lizalde",
+      "comment": "The best fast food ever!!!",
+      "restaurant": "60f7811204ff2421f3ac6d0c",
+      "createdAt": "2021-07-21T02:08:43.925Z",
+      "__v": 0
+    }
 
 ## Testing
 
