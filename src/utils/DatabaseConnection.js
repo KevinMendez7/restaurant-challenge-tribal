@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { mongoURI, nodeEnv } = require('./config');
 
+// The `connection` function make a connection to MongoDb Database
+// It takes the `mongoURI` from environment variables, if connection is successfull should print MongoDb connected.
 const connection = async _ => {
 
     try {

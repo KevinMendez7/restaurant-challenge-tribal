@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const Review = mongoose.model('Review');
 const Restaurant = mongoose.model('Restaurant');
 
+// Review route work with Mongoose calling the Review model and using the functions findById, find, save and populate 
+// to interact with mongodb.
 module.exports = app => {    
 
+  // GET REQUEST to Route `/review/:id` will return a review, you have to send a review id.
   app.get('/review/:id', async (req, res) => {
     try {
       const review = await Review.findById(req.params.id).populate('restaurant');
@@ -16,6 +19,7 @@ module.exports = app => {
     }
   });
 
+  // GET REQUEST to Route `/review` will return all reviews in the database.
   app.get('/review', async (req, res) => {
     try {
       const reviews = await Review.find({});      
@@ -27,6 +31,9 @@ module.exports = app => {
     }
   });
 
+  // You can also request reviews by restaurant to making a GET request to Route `/restaurant/:id/review`.
+  //  will return all the restaurant reviews, you have to send a restaurant id.
+  // The id will be validated is exists, if is a valid object id
     app.get('/restaurant/:id/review', async ({ params : { id : _id } }, res, next) => {
       try {
 
@@ -58,7 +65,7 @@ module.exports = app => {
           msg = `No reviews found for given restaurant(${_id})`
         }
         
-        res.json({ data :reviews, msg });                      
+        res.json({ data: reviews, msg });                      
 
       } catch(err) {
         console.error(err);
@@ -66,8 +73,10 @@ module.exports = app => {
       }        
     });
 
+    // You can create a review making a POST request to Route `/restaurant/:id/review` with the name of the user comment and your comment.
+    //  will return the review created response, this operation has to save the id in the restaurant collection to be able to populate.
     app.post('/restaurant/:id/review', async ({ body, params : { id: _id } }, res) => {
-      try {
+      try {        
         const { name, comment } = body;
         
 
@@ -96,7 +105,7 @@ module.exports = app => {
 
         restaurant.reviews.push(review._id);
 
-        await restaurant.save()
+        await restaurant.save();
 
         res.json(review);            
   
