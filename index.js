@@ -1,3 +1,5 @@
+// Main point of the rest api, the express framwork is implemented here, server is created and is started here
+
 const express = require('express');
 const cors = require('cors');
 const { port } = require('./src/utils/config');
